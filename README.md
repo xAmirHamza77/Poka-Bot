@@ -319,6 +319,15 @@ Download official pre-built binaries for your platform from the [Releases](https
 | 🐧 **Linux / Ubuntu** | `.tar.gz` Server | x64 | [**Download Headless Server**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-Server-0.3.6.tar.gz) |
 | 🪟 **Windows Server**| `.zip` Headless | x64 | [**Download Windows Server Setup**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-Windows-Server-Setup-0.3.6.zip) |
 
+> [!TIP]
+> **macOS Gatekeeper Notice**: Because Poka is a community open-source project without a paid Apple Developer ID certificate, macOS may flag downloaded apps with *"Poka is damaged and can't be opened. You should move it to the Trash"*.
+>
+> To open Poka, drag it to `/Applications` and run this one-time command in your Terminal:
+> ```bash
+> xattr -cr /Applications/Poka.app
+> ```
+> Or go to **System Settings → Privacy & Security** and click **Open Anyway**.
+
 ### Building from Source
 
 Poka can also be compiled from source for macOS and Windows:
