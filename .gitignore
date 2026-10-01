@@ -48,3 +48,5 @@ desktop/dist*/
 desktop/resources/
 desktop/build/pyinstaller/
 desktop/build/*.spec
+release-staging/
+

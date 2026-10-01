@@ -2,9 +2,9 @@ name: Build Poka desktop apps
 on:
   workflow_dispatch:
   push:
-    tags: ['poka-v*']
+    tags: ['v*', 'poka-v*']
 permissions:
-  contents: read
+  contents: write
 jobs:
   package:
     strategy:
@@ -46,3 +46,15 @@ jobs:
             desktop/dist/*.zip
             desktop/dist/*.exe
           if-no-files-found: error
+      - name: Release to GitHub
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            desktop/dist/*.dmg
+            desktop/dist/*.zip
+            desktop/dist/*.exe
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+

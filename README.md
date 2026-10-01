@@ -15,17 +15,17 @@
 [![Desktop](https://img.shields.io/badge/Desktop-macOS%20%7C%20Windows-lightgrey.svg?logo=electron&logoColor=white)](desktop/README.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/xAmirHamza77/Poka-Bot/pulls)
 
-<br />
-
-[Overview](#-overview) • [Key Features](#-what-poka-does) • [Visual Tour](#-visual-tour) • [Quick Start](#-quick-start) • [Architecture](#-system-architecture) • [Security & Governance](#-action-gateway--governance) • [Desktop & Server](#-desktop-apps--deployments) • [Configuration](#-configuration-matrix) • [License](#-license)
-
-<br />
-
-<img src="assets/poka-banner.png" alt="Poka Workspace Banner" width="100%" />
+[Overview](#-overview) • [Downloads](#-desktop-applications--downloads) • [Key Features](#-what-poka-does) • [Visual Tour](#-visual-tour) • [Quick Start](#-quick-start) • [Architecture](#-system-architecture) • [Security & Governance](#-action-gateway--governance) • [Configuration](#-configuration-matrix) • [License](#-license)
 
 </div>
 
 ---
+
+<p align="center">
+  <a href="https://github.com/xAmirHamza77/Poka-Bot">
+    <img src="assets/poka-banner.png" alt="Poka Workspace Banner" width="100%" />
+  </a>
+</p>
 
 ## 🌟 Overview
 
@@ -306,18 +306,31 @@ For native Windows applications and PowerShell automation:
 
 ---
 
-## 💻 Desktop Applications
+## 💻 Desktop Applications & Downloads
 
-Poka can be compiled into native desktop applications for macOS and Windows:
+Download official pre-built binaries for your platform from the [Releases](https://github.com/xAmirHamza77/Poka-Bot/releases) page:
+
+| Platform | Package Type | Architecture | Download Link |
+| :--- | :--- | :--- | :--- |
+| 🍏 **macOS** | `.dmg` Installer | Apple Silicon (M1/M2/M3/M4) | [**Download DMG (v0.3.6)**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-0.3.6-arm64.dmg) |
+| 🍏 **macOS** | `.zip` Portable | Apple Silicon (M1/M2/M3/M4) | [**Download Portable ZIP**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-0.3.6-arm64-mac.zip) |
+| 🪟 **Windows** | `.exe` Setup | x64 / Intel & AMD | [**Download Setup EXE (v0.3.6)**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-Setup-0.3.6.exe) |
+| 🪟 **Windows** | `.zip` Portable | x64 / Intel & AMD | [**Download Portable ZIP**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-0.3.6-win.zip) |
+| 🐧 **Linux / Ubuntu** | `.tar.gz` Server | x64 | [**Download Headless Server**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-Server-0.3.6.tar.gz) |
+| 🪟 **Windows Server**| `.zip` Headless | x64 | [**Download Windows Server Setup**](https://github.com/xAmirHamza77/Poka-Bot/releases/download/v0.3.6/Poka-Windows-Server-Setup-0.3.6.zip) |
+
+### Building from Source
+
+Poka can also be compiled from source for macOS and Windows:
 
 ```bash
-# Prepare application bundle
+# 1. Prepare UI export and backend binary
 npm run prepare:app --prefix desktop
 
-# Build macOS DMG (Apple Silicon & Intel)
+# 2. Build macOS DMG (Apple Silicon & Intel)
 npm run dist:mac --prefix desktop
 
-# Build Windows Installer (NSIS .exe & portable .zip)
+# 3. Build Windows Installer (NSIS .exe & portable .zip)
 npm run dist:win --prefix desktop
 ```
 
