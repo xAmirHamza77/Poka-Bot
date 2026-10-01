@@ -1,0 +1,75 @@
+{
+  "name": "poka-desktop",
+  "version": "0.3.6",
+  "description": "Your personal, local-first AI workspace",
+  "author": "Poka contributors",
+  "license": "MIT",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:ui": "node scripts/build-ui.cjs",
+    "build:backend": "node scripts/build-backend.cjs",
+    "prepare:app": "npm run build:ui && npm run build:backend",
+    "dist:mac": "npm run prepare:app && electron-builder --mac --publish never",
+    "dist:win": "npm run prepare:app && electron-builder --win --publish never",
+    "test": "node --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3",
+    "resedit": "^3.1.0"
+  },
+  "build": {
+    "appId": "app.poka.desktop",
+    "productName": "Poka",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "local-server.cjs",
+      "package.json",
+      "build/icon.png"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/ui",
+        "to": "ui"
+      },
+      {
+        "from": "resources/backend",
+        "to": "backend"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "hardenedRuntime": true,
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Poka uses the microphone when you choose voice input."
+      }
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

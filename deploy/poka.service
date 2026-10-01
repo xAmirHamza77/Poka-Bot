@@ -1,0 +1,21 @@
+[Unit]
+Description=Poka persistent AI server
+After=network-online.target
+Wants=network-online.target
+[Service]
+User=poka
+Group=poka
+WorkingDirectory=/opt/poka/server
+EnvironmentFile=/etc/poka/server.env
+ExecStart=/opt/poka/venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 18400 --workers 1 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/poka
+[Install]
+WantedBy=multi-user.target

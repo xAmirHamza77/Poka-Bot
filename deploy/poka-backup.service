@@ -1,0 +1,8 @@
+[Unit]
+Description=Poka online daily backup
+[Service]
+Type=oneshot
+User=poka
+Group=poka
+UMask=0077
+ExecStart=/opt/poka/venv/bin/python /opt/poka/deploy/backup.py

@@ -1,0 +1,12 @@
+# Change the domain and path. Run Caddy as an automatic Windows service/task with
+# permissions to read the UI. DNS must point to this server; allow TCP 80 and 443.
+poka.example.com {
+    handle /api/* {
+        reverse_proxy 127.0.0.1:18400
+    }
+    handle {
+        root * C:/ProgramData/PokaServer/ui
+        try_files {path} {path}/index.html
+        file_server
+    }
+}

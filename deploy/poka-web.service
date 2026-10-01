@@ -1,0 +1,22 @@
+[Unit]
+Description=Poka HTTPS and desktop UI
+After=network-online.target poka.service
+Wants=network-online.target
+[Service]
+User=poka
+Group=poka
+EnvironmentFile=/etc/poka/web.env
+Environment=XDG_DATA_HOME=/var/lib/poka/caddy
+ExecStart=/opt/poka/bin/caddy run --config /opt/poka/deploy/Caddyfile --adapter caddyfile
+ExecReload=/opt/poka/bin/caddy reload --config /opt/poka/deploy/Caddyfile --adapter caddyfile
+Restart=always
+RestartSec=5
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/poka
+[Install]
+WantedBy=multi-user.target

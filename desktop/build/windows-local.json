@@ -1,0 +1,50 @@
+{
+  "appId": "app.poka.desktop",
+  "productName": "Poka",
+  "directories": {
+    "output": "dist",
+    "buildResources": "build"
+  },
+  "files": [
+    "main.cjs",
+    "preload.cjs",
+    "local-server.cjs",
+    "package.json",
+    "build/icon.png"
+  ],
+  "extraResources": [
+    {
+      "from": "resources/ui",
+      "to": "ui"
+    },
+    {
+      "from": "resources/backend-win",
+      "to": "backend"
+    }
+  ],
+  "mac": {
+    "category": "public.app-category.productivity",
+    "icon": "build/icon.icns",
+    "target": [
+      "dmg",
+      "zip"
+    ],
+    "hardenedRuntime": true,
+    "extendInfo": {
+      "NSMicrophoneUsageDescription": "Poka uses the microphone when you choose voice input."
+    }
+  },
+  "win": {
+    "icon": "build/icon.ico",
+    "target": [
+      "zip"
+    ],
+    "signAndEditExecutable": false
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true
+  },
+  "afterPack": "scripts/windows-icon.cjs"
+}

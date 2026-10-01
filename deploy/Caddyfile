@@ -1,0 +1,29 @@
+{
+    admin localhost:20190
+    auto_https disable_redirects
+}
+https://{$POKA_HOST}:{$POKA_HTTPS_PORT:8443} {
+    tls {
+        issuer acme {
+            dir https://acme-v02.api.letsencrypt.org/directory
+            profile shortlived
+            disable_tlsalpn_challenge
+        }
+    }
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy same-origin
+    }
+    handle /api/* {
+        reverse_proxy 127.0.0.1:18400 {
+            flush_interval -1
+        }
+    }
+    handle {
+        root * /opt/poka/ui
+        file_server
+    }
+}
+http://{$POKA_HOST} {
+    redir https://{$POKA_HOST}:{$POKA_HTTPS_PORT:8443}{uri} permanent
+}

@@ -1,0 +1,5 @@
+fastapi>=0.110,<1
+uvicorn>=0.28,<1
+pillow>=10,<13
+pyautogui==0.9.54
+playwright>=1.55,<2

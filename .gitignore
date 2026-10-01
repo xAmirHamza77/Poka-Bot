@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+*/node_modules/
+client/node_modules/
+desktop/node_modules/
+
+# Next.js build output
+.next/
+client/.next/
+client/out/
+
+# Python / Server cache & environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.pytest_cache/
+server/__pycache__/
+server/app/__pycache__/
+server/app/routers/__pycache__/
+server/app/services/__pycache__/
+windows-agent/__pycache__/
+
+# Local data & environment secrets
+.env
+.env.local
+.env*.local
+*.log
+.poka/
+.open-dots/
+.open-grok-bot/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+.encryption.key
+.auth-token
+
+# OS & Editor files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Desktop build output
+desktop/dist*/
+desktop/resources/
+desktop/build/pyinstaller/
+desktop/build/*.spec
